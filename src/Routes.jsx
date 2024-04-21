@@ -1,6 +1,5 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
-import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import Desktop from "pages/Desktop";
 import Web from "pages/Web";
@@ -12,7 +11,7 @@ import Login from "pages/Login";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
-    { path: "/", element: <Home /> },
+    { path: "/", element: <Login /> },
     { path: "*", element: <NotFound /> },
     {
       path: "desktop",
@@ -36,13 +35,12 @@ const ProjectRoutes = () => {
     },
     {
       path: "registration",
-      element: <Registration/>,
+      element: <Registration />,
     },
     {
       path: "login",
-      element: <Login/>,
+      element: <Login />,
     },
-
   ]);
 
   return element;
