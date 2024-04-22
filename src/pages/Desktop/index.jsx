@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import { Button, Img, Text } from "../../components";
+import { Img, Text } from "../../components";
 import DesktopProjectcard from "../../components/DesktopProjectcard";
 import DesktopUser from "../../components/DesktopUser";
 import { MenuItem, Menu, Sidebar } from "react-pro-sidebar";
 import "styles/index.css"; // Import CSS file for styles
+import Popup from "pages/PopUp";
+import NewProject from "pages/NewProject";
 
 export default function DesktopPage() {
   const [showPopup, setShowPopup] = useState(false);
@@ -16,49 +18,6 @@ export default function DesktopPage() {
   const closePopup = () => {
     setShowPopup(false);
   };
-
-  const [showDescription, setShowDescription] = useState(null);
-
-  // Data for images and descriptions
-  const images = [
-    {
-      src: "./images/Web_Image.png",
-      alt: "Image 1",
-      description: "Description for Image 1",
-      title:"Web"
-    },
-    {
-      src: "./images/Embedded_Im.png",
-      alt: "Image 2",
-      description: "Description for Image 2",
-      title:"Embedded Systems"
-
-    },
-    {
-      src: "./images/Ai_Img.png",
-      alt: "Image 3",
-      description: "Description for Image 3",
-      title:"Artificial Intellegence"
-
-    },
-    {
-      src: "./images/Mobile_Img.png",
-      alt: "Image 4",
-      description: "Description for Image 4",
-      title:"Mobile"
-
-    },
-  ];
-  const handleImageClick = (image) => {
-    if (image === images[0]) {
-      window.location.href = "/web";
-    } else if (image === images[1]) {
-
-    }else if (image === images[2]) {
-    }else if (image === images[3]) {
-    }
-  }
-
   return (
     <>
       <Helmet>
@@ -155,19 +114,7 @@ export default function DesktopPage() {
                   My Projects
                 </Text>
                 <div className="flex self-end justify-center items-center w-[32%] gap-[13px]">
-                  <Button
-                    shape="round"
-                    leftIcon={
-                      <Img
-                        src="images/img_vector_white_a700.svg"
-                        alt="Vector"
-                      />
-                    }
-                    className="gap-2.5 min-w-[118px]"
-                    onClick={openPopup}
-                  >
-                    New Project
-                  </Button>
+                  <NewProject openPopup={openPopup} />
                   <DesktopUser
                     className="flex justify-center items-center gap-2.5 p-[3px] flex-1"
                     userPhoto=".\images\img_hesham_1.png"
@@ -205,54 +152,7 @@ export default function DesktopPage() {
           </div>
         </div>
       </div>
-
-<div className={`popup-overlay ${showPopup ? "active" : ""}`}>
-  <div className={`popup ${showPopup ? "active" : ""}`}>
-    <div className="popup-inner">
-      <p1> What Types of Applications will we make ?</p1>
-      <button className="close-btn" onClick={closePopup}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-x"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="#000000"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-
-      <div className="image-container">
-        <div className="image-grid">
-          {images.map((image, index) => (
-            <div key={index} className="image-item">
-              <h3>{image.title}</h3> {/* Add the title here */}
-              <img
-                src={image.src}
-                alt={image.alt}
-                onClick={() => handleImageClick(image)}
-                onMouseEnter={() => setShowDescription(index)}
-                onMouseLeave={() => setShowDescription(null)}
-              />
-              {showDescription === index && <p>{image.description}</p>}
-              {index < images.length - 1 && <div className="divider"></div>}
-            </div>
-          ))}
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
+      <Popup showPopup={showPopup} closePopup={closePopup} />
     </>
   );
 }
