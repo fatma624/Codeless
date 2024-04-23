@@ -175,7 +175,7 @@ ul {
 /* Existing styles */
 .popup-inner {
   background-color: white;
-  padding: 50px;
+  padding:40px;
   border-radius: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   width: 100%; /* Set to 100% to match parent width */
@@ -196,25 +196,40 @@ ul {
   cursor: pointer;
   color: #333;
 }
+/* Image grid styles */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.image-item {
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 5px; /* Further reduced gap between grid items */
+  border: 2px solid #e0e0e0; /* Border around the entire grid */
+  padding: 10px; /* Further reduced padding around the grid */
   position: relative;
-  text-align: center;
 }
 
+/* Image item styles */
+.image-item {
+  position: relative; /* Ensure relative positioning for child elements */
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  padding: 50px 45px; /* Top, Right, Bottom, Left */
+  cursor: pointer;
+}
+
+.image-item:hover {
+  transform: translateY(-10px); /* Move the image item upward by 10px on hover */
+}
+
+/* Image styles */
 .image-item img {
-  width: 100%;
+  max-width: auto; /* Further reduced max width */
+  max-height: auto; /* Further reduced max height */
+  width: auto;
   height: auto;
   border-radius: 8px;
   cursor: pointer;
 }
 
-
+/* Description text styles */
 .image-item p {
   display: none;
   position: absolute;
@@ -222,12 +237,96 @@ ul {
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
+  padding: 8px;
 }
 
 .image-item:hover p {
   display: block;
 }
-  
+
+.image-element {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-item:hover .image-element {
+  opacity: 1;
+}
+
+/* Divider styles */
+.image-grid::before,
+.image-grid::after {
+  content: "";
+  position: absolute;
+  background-color: #e0e0e0;
+}
+
+/* Vertical divider */
+.image-grid::before {
+  top: 0;
+  bottom: 0;
+  right: calc(50% - 1px); /* Adjusted position */
+  width: 2px;
+}
+
+/* Horizontal divider */
+.image-grid::after {
+  left: 0;
+  right: 0;
+  bottom: calc(50% - 1px); /* Adjusted position */
+  height: 2px;
+}
+
+/* Positioning for each grid item */
+.image-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.image-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.image-item:nth-child(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.image-item:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.label {
+  position: absolute;
+  bottom: 5px; /* Adjusted to sit above the image border */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 1;
+  max-width: calc(100% - 20px); /* Limiting the width to be within the image grid bounds */
+  overflow: hidden; /* Hide overflow text */
+  white-space: normal; /* Allow text to wrap */
+}
+
+.label .text-wrapper {
+  color: #919191;
+  font-family: "Lama Sans-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+  overflow: hidden; /* Hide overflowing text */
+  white-space: normal; /* Allow text to wrap */
+  line-height: 1.4; /* Set line height to improve readability */
+  max-height: 2.8em; /* Set max height to fit two lines considering line height */
+}
+
 
 /* Additional styling can be added as needed */
