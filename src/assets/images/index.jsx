@@ -1,3 +1,4 @@
 import { CloseSVG } from "./close";
 import { SearchSVG } from "./search";
-export { CloseSVG, SearchSVG };
+import { LogoutSVG } from "./logout";
+export { CloseSVG, SearchSVG, LogoutSVG };

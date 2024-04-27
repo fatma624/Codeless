@@ -119,6 +119,7 @@ export default function DesktopPage() {
                     className="flex justify-center items-center gap-2.5 p-[3px] flex-1"
                     userPhoto=".\images\img_hesham_1.png"
                     userName="Ahmed Atef Saleh"
+                    userEmail="AhmedAtefSaleh@gmail.com"
                   />
                 </div>
               </header>
