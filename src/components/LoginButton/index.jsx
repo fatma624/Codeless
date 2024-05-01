@@ -2,36 +2,32 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const shapes = {
-  round: "rounded-[10px]",
+  round: "rounded-[20px]",
 };
 const variants = {
   fill: {
-    white_A700: "bg-white-A700 text-black-900",
-    light_blue_600: "bg-light_blue-600",
     blue_500: "bg-blue-500 text-white-A700",
   },
 };
 const sizes = {
-  lg: "h-[40px] px-2.5 text-sm",
-  xs: "h-[32px] px-2.5 text-sm",
-  sm: "h-[35px] px-1",
-  md: "h-[36px] px-[9px] text-sm",
+  xs: "h-[50px] px-[35px] text-lg",
 };
 
-const Button = ({
+const LoginButton = ({
   children,
   className = "",
   leftIcon,
   rightIcon,
-  shape = "",
+  shape,
   variant = "fill",
-  size = "md",
+  size = "xs",
   color = "blue_500",
+
   ...restProps
 }) => {
   return (
     <button
-      className={`${className} flex items-center justify-center text-center cursor-pointer ${
+      className={`${className} flex flex-row items-center justify-center text-center cursor-pointer text-white-A700 text-lg font-bold bg-blue-500 rounded-[20px] ${
         (shape && shapes[shape]) || ""
       } ${(size && sizes[size]) || ""} ${
         (variant && variants[variant]?.[color]) || ""
@@ -45,15 +41,15 @@ const Button = ({
   );
 };
 
-Button.propTypes = {
+LoginButton.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   leftIcon: PropTypes.node,
   rightIcon: PropTypes.node,
   shape: PropTypes.oneOf(["round"]),
-  size: PropTypes.oneOf(["lg", "xs", "sm", "md"]),
+  size: PropTypes.oneOf(["xs"]),
   variant: PropTypes.oneOf(["fill"]),
-  color: PropTypes.oneOf(["white_A700", "light_blue_600", "blue_500"]),
+  color: PropTypes.oneOf(["blue_500"]),
 };
 
-export { Button };
+export { LoginButton };

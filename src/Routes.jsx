@@ -7,11 +7,11 @@ import NewProject from "pages/NewProject";
 import Archived from "pages/Archived";
 import HelpAndSupport from "pages/HelpAndSupport";
 import Registration from "pages/Registration";
-import Login from "pages/Login";
+import Loginpage from "pages/Loginpage";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
-    { path: "/", element: <Login /> },
+    { path: "/", element: <Loginpage /> },
     { path: "*", element: <NotFound /> },
     {
       path: "desktop",
@@ -38,8 +38,8 @@ const ProjectRoutes = () => {
       element: <Registration />,
     },
     {
-      path: "login",
-      element: <Login />,
+      path: "loginpage",
+      element: <Loginpage />,
     },
   ]);
 

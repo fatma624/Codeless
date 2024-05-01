@@ -1,12 +1,17 @@
 import React from "react";
 
 const sizes = {
-  xs: "text-sm font-normal",
-  s: "text-base font-normal",
-  md: "text-[40px] font-normal",
+  xs: "text-base font-light",
+  s: "text-lg font-medium",
 };
 
-const Text = ({ children, className = "", as, size = "s", ...restProps }) => {
+const LoginText = ({
+  children,
+  className = "",
+  as,
+  size = "xs",
+  ...restProps
+}) => {
   const Component = as || "p";
 
   return (
@@ -19,4 +24,4 @@ const Text = ({ children, className = "", as, size = "s", ...restProps }) => {
   );
 };
 
-export { Text };
+export { LoginText };
